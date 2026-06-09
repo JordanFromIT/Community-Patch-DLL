@@ -29850,7 +29850,7 @@ void CvCity::produce(UnitTypes eTrainUnit, UnitAITypes eTrainAIUnit, bool bCanOv
 				{
 					UnitAITypes eZuluImpiAI = pkcUnitEntry->GetDefaultUnitAIType();
 					CvUnit* pZuluImpi = kOwner.initUnit(eZuluImpi, pUnit->getX(), pUnit->getY(), eZuluImpiAI);
-					pZuluImpi->convert(pUnit, true);
+					pZuluImpi->convert(pUnit, true, false);
 					pUnit = pZuluImpi;
 				}
 			}
@@ -31144,7 +31144,7 @@ CvUnit* CvCity::PurchaseUnit(UnitTypes eUnitType, YieldTypes ePurchaseYield)
 				{
 					UnitAITypes eZuluImpiAI = pkcUnitEntry->GetDefaultUnitAIType();
 					CvUnit* pZuluImpi = kPlayer.initUnit(eZuluImpi, pNewUnit->getX(), pNewUnit->getY(), eZuluImpiAI);
-					pZuluImpi->convert(pNewUnit, true);
+					pZuluImpi->convert(pNewUnit, true, false);
 
 					//return value must not be a zombie
 					pNewUnit = pZuluImpi;

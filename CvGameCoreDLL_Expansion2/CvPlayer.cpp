@@ -12905,7 +12905,7 @@ void CvPlayer::receiveGoody(CvPlot* pPlot, GoodyTypes eGoody, CvUnit* pUnit)
 					}
 				}
 
-				pNewUnit->convert(pUnit, true);
+				pNewUnit->convert(pUnit, true, false);
 				pNewUnit->setupGraphical();
 			}
 			else
@@ -35640,7 +35640,7 @@ void CvPlayer::SetUnitClassReplacement(UnitClassTypes eReplacedUnitClass, UnitCl
 				CvUnit* pNewUnit = initUnit(eReplacementUnit, pLoopUnit->getX(), pLoopUnit->getY(), NO_UNITAI, REASON_UPGRADE, false, false, 0, 0, NO_CONTRACT, true, pLoopUnit);
 				if (pNewUnit)
 				{
-					pNewUnit->convert(pLoopUnit, true);
+					pNewUnit->convert(pLoopUnit, true, false);
 					pNewUnit->setupGraphical();
 					pLoopUnit->kill(true);
 				}
