@@ -404,6 +404,7 @@
 #define MOD_BALANCE_PERMANENT_VOTE_COMMITMENTS						gCustomMods.isBALANCE_PERMANENT_VOTE_COMMITMENTS()
 
 // Changes to City-State Quests (Faith Contest now based on followers converted, Kill City-State now mutual and solvable by allying both City-States)
+// Pledge to Protect quest prioritizes the most recent attacker if jerk status is active, then the most recent bully
 // Also disables City-States' resistance to conversion if an active Spread Religion quest is being fulfilled (correct player and religion)
 #define MOD_BALANCE_QUEST_CHANGES									gCustomMods.isBALANCE_QUEST_CHANGES()
 

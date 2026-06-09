@@ -9355,23 +9355,20 @@ std::vector<ScoreCityEntry> CvEspionageAI::BuildMinorCityList(bool bLogAllChoice
 
 		int iModifier = 0;
 
-		if (/*FALSE*/ GD_INT_GET(QUEST_DISABLED_COUP) < 1)
+		for (int iMinorLoop = MAX_MAJOR_CIVS; iMinorLoop < MAX_CIV_PLAYERS; iMinorLoop++)
 		{
-			for (int iMinorLoop = MAX_MAJOR_CIVS; iMinorLoop < MAX_CIV_PLAYERS; iMinorLoop++)
+			PlayerTypes eMinor = (PlayerTypes)iMinorLoop;
+			if (eMinor != NO_PLAYER)
 			{
-				PlayerTypes eMinor = (PlayerTypes)iMinorLoop;
-				if (eMinor != NO_PLAYER)
+				CvPlayer* pMinor = &GET_PLAYER(eMinor);
+				if (pMinor && pMinor->isMinorCiv())
 				{
-					CvPlayer* pMinor = &GET_PLAYER(eMinor);
-					if (pMinor && pMinor->isMinorCiv())
+					CvMinorCivAI* pMinorCivAI = pMinor->GetMinorCivAI();
+					if (pMinorCivAI && pMinorCivAI->IsActiveQuestForPlayer(m_pPlayer->GetID(), MINOR_CIV_QUEST_COUP))
 					{
-						CvMinorCivAI* pMinorCivAI = pMinor->GetMinorCivAI();
-						if (pMinorCivAI && pMinorCivAI->IsActiveQuestForPlayer(m_pPlayer->GetID(), MINOR_CIV_QUEST_COUP))
+						if (pMinorCivAI->GetQuestData1(m_pPlayer->GetID(), MINOR_CIV_QUEST_COUP) == eTargetPlayer)
 						{
-							if (pMinorCivAI->GetQuestData1(m_pPlayer->GetID(), MINOR_CIV_QUEST_COUP) == eTargetPlayer)
-							{
-								iModifier += 50;
-							}
+							iModifier += 50;
 						}
 					}
 				}
