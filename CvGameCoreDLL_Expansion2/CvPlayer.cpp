@@ -21591,9 +21591,11 @@ int CvPlayer::GetHappinessFromReligion()
 				}
 			}
 
-			int iSpyHappiness = pReligion->m_Beliefs.GetHappinessFromForeignSpies(GetID(), pHolyCity, true);
-			if (iSpyHappiness > 0)
+			int iSpyHappiness = max(pReligion->m_Beliefs.GetHappinessFromSpies(GetID(), pHolyCity, true), 0);
+			int iForeignSpyHappiness = max(pReligion->m_Beliefs.GetHappinessFromForeignSpies(GetID(), pHolyCity, true), 0);
+			if (iSpyHappiness > 0 || iForeignSpyHappiness > 0)
 			{
+				int numSpies = 0;
 				int numForeignSpies = 0;
 				CvPlayerEspionage* pEspionage = GetEspionage();
 				if (pEspionage)
@@ -21615,13 +21617,16 @@ int CvPlayer::GetHappinessFromReligion()
 						if (pSpyCity == NULL)
 							continue;
 
+						numSpies++;
+
 						if (pSpyCity->getOwner() == GetID())
 							continue;
 
 						numForeignSpies++;
 					}
 				}
-				iHappinessFromReligion += numForeignSpies * iSpyHappiness;
+				iHappinessFromReligion += numSpies * iSpyHappiness;
+				iHappinessFromReligion += numForeignSpies * iForeignSpyHappiness;
 			}
 		}
 	}

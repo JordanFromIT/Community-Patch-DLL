@@ -5075,9 +5075,20 @@ int CityStrategyAIHelpers::GetBuildingPolicyValue(CvCity *pCity, BuildingTypes e
 			const CvReligion* pReligion = GC.getGame().GetGameReligions()->GetReligion(eReligion, kPlayer.GetID());
 			if (pReligion)
 			{
-				if (pReligion->m_Beliefs.GetSpyPressure(kPlayer.GetID(), pCity) != 0)
+				int iTempValue = pReligion->m_Beliefs.GetSpyPressure(kPlayer.GetID(), pCity);
+				if (iTempValue != 0)
 				{
-					iValue += pReligion->m_Beliefs.GetSpyPressure(kPlayer.GetID(), pCity);
+					iValue += iTempValue * 10;
+				}
+				iTempValue = pReligion->m_Beliefs.GetSpyPressureErosion(kPlayer.GetID(), pCity);
+				if (iTempValue != 0)
+				{
+					iValue += iTempValue * 20;
+				}
+				iTempValue = pReligion->m_Beliefs.GetEspionageNetworkPoints(kPlayer.GetID(), pCity);
+				if (iTempValue != 0)
+				{
+					iValue += iTempValue * 40;
 				}
 			}
 		}
