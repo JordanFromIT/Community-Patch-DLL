@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Jordan: custom game-setup options.
+     These render automatically as checkboxes (with their Help text as a mouse-over
+     tooltip) on the Advanced Setup screen, because the stock AdvancedSetup.lua - which
+     EUI does NOT override - iterates GameOptions{Visible=1}. They are read at runtime by
+     Core Files/New Lua/JordanGameOptions.lua via Game.IsOption("GAMEOPTION_..."). -->
+<GameData>
+	<GameOptions>
+		<Row>
+			<Type>GAMEOPTION_EXTRA_PALACE_BONUSES</Type>
+			<Description>TXT_KEY_GAME_OPTION_EXTRA_PALACE_BONUSES</Description>
+			<Help>TXT_KEY_GAME_OPTION_EXTRA_PALACE_BONUSES_HELP</Help>
+			<Default>true</Default>
+		</Row>
+		<Row>
+			<Type>GAMEOPTION_CAPTURE_GREAT_PEOPLE</Type>
+			<Description>TXT_KEY_GAME_OPTION_CAPTURE_GREAT_PEOPLE</Description>
+			<Help>TXT_KEY_GAME_OPTION_CAPTURE_GREAT_PEOPLE_HELP</Help>
+			<Default>true</Default>
+		</Row>
+		<Row>
+			<Type>GAMEOPTION_NO_FUTURISTIC_UNITS</Type>
+			<Description>TXT_KEY_GAME_OPTION_NO_FUTURISTIC_UNITS</Description>
+			<Help>TXT_KEY_GAME_OPTION_NO_FUTURISTIC_UNITS_HELP</Help>
+			<Default>true</Default>
+		</Row>
+	</GameOptions>
+	<Language_en_US>
+		<Row Tag="TXT_KEY_GAME_OPTION_EXTRA_PALACE_BONUSES">
+			<Text>Extra Palace Bonuses</Text>
+		</Row>
+		<Row Tag="TXT_KEY_GAME_OPTION_EXTRA_PALACE_BONUSES_HELP">
+			<Text>When ON, every civilization's capital gains a set of wonder-style bonuses: +30% Worker build speed, +150 [ICON_HAPPINESS_1] Happiness, and +10% [ICON_FOOD] Food (faster growth) in all of its cities. Turn OFF for a standard Vox Populi Palace with none of these bonuses.</Text>
+		</Row>
+		<Row Tag="TXT_KEY_GAME_OPTION_CAPTURE_GREAT_PEOPLE">
+			<Text>Capture Great People</Text>
+		</Row>
+		<Row Tag="TXT_KEY_GAME_OPTION_CAPTURE_GREAT_PEOPLE_HELP">
+			<Text>When ON, an enemy civilian Great Person (Writer, Artist, Musician, Scientist, Merchant, Engineer or Diplomat) is captured instead of destroyed when you take the tile it stands on - just like capturing a Worker. When OFF, Great People are destroyed, as in standard Vox Populi. (Great Generals and Great Admirals are never capturable.)</Text>
+		</Row>
+		<Row Tag="TXT_KEY_GAME_OPTION_NO_FUTURISTIC_UNITS">
+			<Text>No Futuristic Units</Text>
+		</Row>
+		<Row Tag="TXT_KEY_GAME_OPTION_NO_FUTURISTIC_UNITS_HELP">
+			<Text>When ON, the late-game futuristic Mech and XCOM Squad units cannot be built or trained by any civilization, keeping the modern era grounded. Turn OFF to allow them to be built normally.</Text>
+		</Row>
+	</Language_en_US>
+</GameData>

@@ -26,8 +26,9 @@ VALUES
 	('DIPLO_VICTORY_CIV_DELEGATES_ELIMINATED', 0.5),
 	('DIPLO_VICTORY_CS_DELEGATES_ALIVE', 1.0),
 	('DIPLO_VICTORY_CS_DELEGATES_ELIMINATED', 0.5),
--- Number of units allowed in a city
-	('CITY_UNIT_LIMIT', 1),
+-- Number of units allowed on a normal tile and in a city (Jordan: 3-unit stacking, incl. cities; replaces standalone "3 Units per Tile" mod)
+	('PLOT_UNIT_LIMIT', 3),
+	('CITY_UNIT_LIMIT', 3),
 	('HISTORY_LOCAL_NUM_BEST_CITIES', 1),
 	('HISTORY_NUM_TURNS_TO_AVERAGE', 10), -- number of turns considered for yield history calculation
 -- Defines used only in modmods
@@ -36,7 +37,9 @@ VALUES
 	('PROMOTION_FLAGSHIP', -1),
 -- Number of rings a new city starts with
 	('CITY_STARTING_RINGS', 1),
-	('MAXIMUM_WORK_PLOT_DISTANCE', 3),
+	('MAXIMUM_WORK_PLOT_DISTANCE', 5),
+	('MAXIMUM_BUY_PLOT_DISTANCE', 5),
+	('MAXIMUM_ACQUIRE_PLOT_DISTANCE', 8),	
 -- AI non-diplomacy flavor caps (diplomacy flavors are hardcoded between 1-10)
 	('PERSONALITY_FLAVOR_MAX_VALUE', 10),
 	('PERSONALITY_FLAVOR_MIN_VALUE', 1), -- note: if a non-diplomacy flavor is zeroed out, it will stay at zero; the MIN_VALUE is to prevent the FLAVOR_RANDOMIZATION_RANGE randomization from taking it below 1
@@ -423,7 +426,7 @@ VALUES
 	('MINOR_CIV_GOLD_TRIBUTE_THRESHOLD', 0),
 	('MINOR_CIV_HEAVY_TRIBUTE_THRESHOLD', 0),
 -- Marriage
-	('BALANCE_GPP_RATE_IN_CAPITAL_PER_MARRIAGE', 0),
+	('BALANCE_GPP_RATE_IN_CAPITAL_PER_MARRIAGE', 15),
 	('BALANCE_MARRIAGE_RESTING_POINT_INCREASE', 200),
 	('BALANCE_MARRIAGE_COST_BASE', 200),
 	('BALANCE_MARRIAGE_COST_INCREASE_PER_PREVIOUS_MARRIAGE', 200),
@@ -436,7 +439,7 @@ VALUES
 -- If set to a positive value, observer mode will stop automatically after this many turns
 	('MAX_TURNS_OBSERVER_MODE', 0),
 -- Misc.
-	('MIN_CITY_RANGE', 3), -- Backup min city range (if MinDistanceCities or MinDistanceCityStates are 0 in the Worlds table)
+	('MIN_CITY_RANGE', 5), -- Backup min city range (if MinDistanceCities or MinDistanceCityStates are 0 in the Worlds table)
 	('UNHAPPINESS_PER_POPULATION_FLOAT', 0.0),
 	('POLICY_COST_EXTRA_VALUE', 0.0),
 	('BLOCKADE_GOLD_PENALTY', 0),

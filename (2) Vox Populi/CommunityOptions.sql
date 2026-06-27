@@ -21,7 +21,7 @@ INSERT INTO Community (Type, Value) VALUES ('COMMUNITY_CORE_BALANCE_RESOURCE_REV
 -- 2 = 15 HP per turn
 ----------------------------------------------------------------------------
 
-INSERT INTO Community (Type, Value) VALUES ('BARBARIAN_HEAL', 1);
+INSERT INTO Community (Type, Value) VALUES ('BARBARIAN_HEAL', 2);
 
 ----------------------------------------------------------------------------
 -- World Wonders refund yields if you are beaten to them by another player

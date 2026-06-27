@@ -168,11 +168,11 @@
 		<!-- ********************************************************** -->
 
 		<!-- Separates the Great People counters for Engineers, Scientists, and Merchants -->
-		<Row Class="6" Name="GLOBAL_SEPARATE_GP_COUNTERS" Value="0"/>
+		<Row Class="6" Name="GLOBAL_SEPARATE_GP_COUNTERS" Value="1"/>
 
 		<!-- Permits ships to enter coastal forts/citadels in friendly lands -->
 		<!-- If GLOBAL_PASSABLE_FORTS=0, ships may only enter player cities or pass through allied City-State cities -->
-		<Row Class="6" Name="GLOBAL_PASSABLE_FORTS" Value="0"/>
+		<Row Class="6" Name="GLOBAL_PASSABLE_FORTS" Value="1"/>
 
 		<!-- Paratroopers take interception damage from hostile anti-air units -->
 		<Row Class="5" Name="GLOBAL_PARATROOPS_AA_DAMAGE" Value="0"/>
@@ -203,8 +203,8 @@
 		<Row Class="5" Name="GLOBAL_CS_GIFTS_LOCAL_XP" Value="0"/>
 
 		<!-- Give initial production boost for cities founded on forests, as if the forest had been chopped down by a worker -->
-		<Row Class="5" Name="GLOBAL_CITY_FOREST_BONUS" Value="0"/>
-		<Row Class="0" Name="GLOBAL_CITY_FOREST_BONUS_PERCENT" Value="50"/> <!-- Percentage of "ring-1 chop" -->
+		<Row Class="5" Name="GLOBAL_CITY_FOREST_BONUS" Value="1"/>
+		<Row Class="0" Name="GLOBAL_CITY_FOREST_BONUS_PERCENT" Value="100"/> <!-- Percentage of "ring-1 chop" -->
 		<!-- Also GLOBAL_CITY_FOREST_BONUS_TECH (optional) in CustomModPostDefines -->
 
 		<!-- Give initial production boost for cities founded on jungles, as if the jungle had been chopped down by a worker -->
@@ -236,7 +236,7 @@
 		<Row Class="5" Name="GLOBAL_CS_UPGRADES" Value="0"/>
 
 		<!-- Other players' Settlers recaptured from Barbarians will sometimes remain as Settlers -->
-		<Row Class="6" Name="GLOBAL_GRATEFUL_SETTLERS" Value="0"/>
+		<Row Class="6" Name="GLOBAL_GRATEFUL_SETTLERS" Value="1"/>
 		<!-- Probability modifiers (can be optionally modified by uncommenting them) -->
 		<!-- Row Class="0" Name="GLOBAL_GRATEFUL_SETTLERS_PERCENT" Value="20"/ -->
 		<!-- Row Class="0" Name="GLOBAL_GRATEFUL_SETTLERS_WAR_MULTIPLIER" Value="0"/ -->
@@ -287,7 +287,7 @@
 		<Row Class="5" Name="RELIGIOUS_SETTLERS_WEIGHTED" Value="1"/>
 
 		<!-- Submarines under ice are immune to ranged attacks, except from other submarines -->
-		<Row Class="5" Name="GLOBAL_SUBS_UNDER_ICE_IMMUNITY" Value="0"/>
+		<Row Class="5" Name="GLOBAL_SUBS_UNDER_ICE_IMMUNITY" Value="1"/>
 
 		<!-- Enables production to be stockpiled -->
 		<!-- See also: "Buildings - Storage Yard and Stockpile" -->
@@ -315,18 +315,18 @@
 
 		<!-- Hovering unit can only heal over land -->
 		<!-- See also: "Units - Steampunk Airships" -->
-		<Row Class="5" Name="UNITS_HOVERING_LAND_ONLY_HEAL" Value="0"/>
+		<Row Class="5" Name="UNITS_HOVERING_LAND_ONLY_HEAL" Value="1"/>
 
 		<!-- CURRENTLY NON-FUNCTIONAL -->
 		<!-- Route To will only build roads, or upgrade road to rail, for human players -->
 		<!-- See also: "UI - No Auto-Embark Workers" -->
-		<Row Class="4" Name="GLOBAL_QUICK_ROUTES" Value="0"/>
+		<Row Class="4" Name="GLOBAL_QUICK_ROUTES" Value="1"/>
 
 		<!-- CURRENTLY NON-FUNCTIONAL -->
 		<!-- Changes the stacking limits based on what the tile is (city, fort, plain, etc.) -->
 		<!-- See also: "Global - 2 Units Per Fort" -->
 		<!-- See also: "Global - 3 Units Per City" -->
-		<Row Class="6" Name="GLOBAL_STACKING_RULES" Value="0"/>
+		<Row Class="6" Name="GLOBAL_STACKING_RULES" Value="1"/>
 
 
 		<!-- ********************************************************** -->
@@ -399,7 +399,7 @@
 		<Row Class="6" Name="BALANCE_RANGED_DEFENSE_UNIT_HEALTH" Value="0"/>
 
 		<!-- Land COMBAT units blockade undefended adjacent tiles -->
-		<Row Class="6" Name="BALANCE_LAND_UNITS_ADJACENT_BLOCKADE" Value="0"/>
+		<Row Class="6" Name="BALANCE_LAND_UNITS_ADJACENT_BLOCKADE" Value="1"/>
 
 		<!-- Only units with UNITCOMBAT_RECON or UnitPromotions.GainsXPFromScouting (as well as city border growth) can claim Ancient Ruins -->
 		<Row Class="6" Name="BALANCE_RECON_ONLY_ANCIENT_RUINS" Value="0"/>
@@ -486,7 +486,7 @@
 		<!-- ********************************************************** -->
 
 		<!-- Alters Assyria's conquest trait so that the player always chooses a free tech upon city conquest -->
-		<Row Class="5" Name="BALANCE_ALTERNATE_ASSYRIA_TRAIT" Value="0"/>
+		<Row Class="5" Name="BALANCE_ALTERNATE_ASSYRIA_TRAIT" Value="1"/>
 
 		<!-- Grants Celts maximum up to 3 unimproved adjacent forests for faith -->
 		<Row Class="4" Name="BALANCE_ALTERNATE_CELTS_TRAIT" Value="0"/>
@@ -499,11 +499,11 @@
 
 		<!-- Maintains an even ratio of City-States with each trait or personality type at game start -->
 		<!-- If both options are combined, each group of City-States with the same trait (e.g., all Cultured CS) will have an even ratio of personality types -->
-		<Row Class="6" Name="BALANCE_CITY_STATE_TRAITS" Value="0"/>
-		<Row Class="5" Name="BALANCE_CITY_STATE_PERSONALITIES" Value="0"/>
+		<Row Class="6" Name="BALANCE_CITY_STATE_TRAITS" Value="1"/>
+		<Row Class="5" Name="BALANCE_CITY_STATE_PERSONALITIES" Value="1"/>
 
 		<!-- Restricts a Team from passing into the next era before they have found all techs of their current era -->
-		<Row Class="6" Name="BALANCE_ERA_RESTRICTION" Value="0"/>
+		<Row Class="6" Name="BALANCE_ERA_RESTRICTION" Value="1"/>
 
 		<!-- Great Generals & Admirals provide combat bonuses for only the era they born and the following era -->
 		<Row Class="5" Name="BALANCE_ERA_RESTRICTED_GENERALS" Value="0" DbUpdates="1"/>
@@ -569,7 +569,7 @@
 		<!-- ********************************************************** -->
 
 		<!-- Make the UI show moves remaining in the form (exact movement points / 60) for the tile currently being moused over -->
-		<Row Class="2" Name="UI_DISPLAY_PRECISE_MOVEMENT_POINTS" Value="0"/>
+		<Row Class="2" Name="UI_DISPLAY_PRECISE_MOVEMENT_POINTS" Value="1"/>
 
 		<!-- Enables Hidamari's override forcing civs to use civ-specific text only -->
 		<Row Class="4" Name="UI_NO_RANDOM_CIV_DIALOGUE" Value="0"/>
@@ -1076,7 +1076,7 @@
 		<!--   GameEvents.UnitCaptured.Add(function(iByPlayer, iByUnit, iCapturedPlayer, iCapturedUnit, bWillBeKilled, iReason) end) -->
 		<!--     iReason - 0=Move, 1=Combat, 2=Trait (barb land), 3=Trait (barb naval), 4=Belief (barb) -->
 		<!--   GameEvents.UnitCaptureType.Add(function(iPlayer, iUnit, iUnitType, iByCiv) return iCaptureUnitType; end) -->
-		<Row Class="3" Name="EVENTS_UNIT_CAPTURE" Value="0"/>
+		<Row Class="3" Name="EVENTS_UNIT_CAPTURE" Value="1"/><!-- Jordan: enable UnitCaptureType hook for "Capture Great People" option -->
 
 		<!-- Event sent as units are converted (wherever CvUnit::convert() is called, e.g., upgrade or barbarian capture) -->
 		<!--   GameEvents.UnitConverted.Add(function(iOldPlayer, iNewPlayer, iOldUnit, iNewUnit, bIsUpgrade) return true end) -->

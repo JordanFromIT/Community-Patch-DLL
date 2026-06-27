@@ -1,7 +1,7 @@
 UPDATE Worlds
 SET
-	MinDistanceCities = 3,
-	MinDistanceCityStates = 2,
+	MinDistanceCities = 5,
+	MinDistanceCityStates = 3,
 	NumCitiesPolicyCostMod = 5,
 	NumCitiesTourismCostMod = 5,
 	NumCitiesTechCostMod = 5,
@@ -49,3 +49,11 @@ SET
 	NumCitiesUnhappinessPercent = 60,
 	TradeRouteDistanceMod = 160
 WHERE Type = 'WORLDSIZE_HUGE';
+
+-- Jordan: Trading Posts (Villages) restricted to flat land, so the AI stops
+-- spamming them on hills. Replaces the standalone "Global - Trading Posts Flat
+-- Land" mod. NOTE: that mod also disabled Forts (PrereqTech=TECH_NO_EXIST);
+-- intentionally NOT ported here because it conflicts with GLOBAL_PASSABLE_FORTS.
+UPDATE Improvements
+SET RequiresFlatlands = 1
+WHERE Type = 'IMPROVEMENT_TRADING_POST';

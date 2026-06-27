@@ -11,7 +11,7 @@ SET
 	DifficultyBonusPercent = 75,
 	ExperiencePercent = 67,
 	SpyRatePercent = 67,
-	ResearchPercent = 67,
+	ResearchPercent = 500,
 	StartingHappiness = 0,
 	GoldenAgePercent = 67,
 	TradeRouteSpeedMod = 67
@@ -30,7 +30,7 @@ SET
 	DifficultyBonusPercent = 100,
 	ExperiencePercent = 100,
 	SpyRatePercent = 100,
-	ResearchPercent = 100,
+	ResearchPercent = 1500,
 	StartingHappiness = 0,
 	GoldenAgePercent = 100,
 	TradeRouteSpeedMod = 100
@@ -49,7 +49,7 @@ SET
 	DifficultyBonusPercent = 150,
 	ExperiencePercent = 150,
 	SpyRatePercent = 150,
-	ResearchPercent = 150,
+	ResearchPercent = 2000,
 	StartingHappiness = 1,
 	GoldenAgePercent = 150,
 	TradeRouteSpeedMod = 150
@@ -68,7 +68,7 @@ SET
 	DifficultyBonusPercent = 200,
 	ExperiencePercent = 300,
 	SpyRatePercent = 300,
-	ResearchPercent = 300,
+	ResearchPercent = 2500,
 	StartingHappiness = 2,
 	GoldenAgePercent = 300,
 	TradeRouteSpeedMod = 300

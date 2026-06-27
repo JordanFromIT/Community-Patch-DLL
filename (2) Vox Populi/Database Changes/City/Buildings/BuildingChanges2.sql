@@ -351,16 +351,16 @@ SET
 	Help = 'TXT_KEY_WONDER_PYRAMIDS_HELP',
 	PolicyBranchType = NULL,
 	PrereqTech = 'TECH_MINING',
-	WorkerSpeedModifier = 0
+	WorkerSpeedModifier = 30
 WHERE Type = 'BUILDING_PYRAMID';
 
 INSERT INTO Building_YieldChanges
 	(BuildingType, YieldType, Yield)
 VALUES
-	('BUILDING_PYRAMID', 'YIELD_CULTURE', 1);
+	('BUILDING_PYRAMID', 'YIELD_CULTURE', 5);
 
 UPDATE Building_FreeUnits
-SET UnitType = 'UNIT_SETTLER', NumUnits = 1 -- Venice gets a Merchant of Venice instead
+SET UnitType = 'UNIT_WORKER', NumUnits = 2 -- Jordan: was 1 Settler; now 2 Workers
 WHERE BuildingType = 'BUILDING_PYRAMID';
 
 INSERT INTO Building_YieldFromGPExpend
@@ -387,7 +387,9 @@ WHERE BuildingType = 'BUILDING_PETRA';
 INSERT INTO Building_TerrainYieldChanges
 	(BuildingType, TerrainType, YieldType, Yield)
 VALUES
-	('BUILDING_PETRA', 'TERRAIN_DESERT', 'YIELD_GOLD', 1);
+	('BUILDING_PETRA', 'TERRAIN_DESERT', 'YIELD_GOLD', 1),
+	('BUILDING_PETRA', 'TERRAIN_DESERT', 'YIELD_PRODUCTION', 1),
+	('BUILDING_PETRA', 'TERRAIN_DESERT', 'YIELD_FOOD', 1);
 
 -- Temple of Artemis
 UPDATE Buildings
@@ -400,7 +402,7 @@ WHERE Type = 'BUILDING_TEMPLE_ARTEMIS';
 INSERT INTO Building_YieldChanges
 	(BuildingType, YieldType, Yield)
 VALUES
-	('BUILDING_TEMPLE_ARTEMIS', 'YIELD_CULTURE', 1);
+	('BUILDING_TEMPLE_ARTEMIS', 'YIELD_CULTURE', 5);
 
 UPDATE Building_UnitCombatProductionModifiers
 SET Modifier = 25
@@ -468,6 +470,10 @@ VALUES
 	('BUILDING_HANGING_GARDEN', 'YIELD_CULTURE', 1);
 
 -- Roman Forum
+UPDATE Buildings
+SET
+	ExtraLeagueVotes = 5
+WHERE Type = 'BUILDING_ROMAN_FORUM';
 INSERT INTO Building_YieldChanges
 	(BuildingType, YieldType, Yield)
 VALUES
@@ -687,7 +693,7 @@ UPDATE Buildings
 SET
 	PolicyBranchType = NULL,
 	UnhappinessModifier = 0,
-	SingleLeagueVotes = 0,
+	SingleLeagueVotes = 1,
 	PrereqTech = 'TECH_CIVIL_SERVICE',
 	PolicyType = 'POLICY_LIBERTY_FINISHER',
 	PovertyFlatReduction = 1
@@ -715,8 +721,8 @@ UPDATE Buildings
 SET
 	PrereqTech = 'TECH_MACHINERY',
 	Help = 'TXT_KEY_BUILDING_NOTRE_DAME_HELP',
-	UnmoddedHappiness = 0,
-	Happiness = 1,
+	UnmoddedHappiness = 10, -- Jordan: was 150; the 150 now lives on BUILDING_PALACE
+	Happiness = 5,
 	ThemingBonusHelp = 'TXT_KEY_BUILDING_NOTRE_DAME_THEMING_BONUS_HELP',
 	GreatWorkSlotType = 'GREAT_WORK_SLOT_ART_ARTIFACT',
 	GreatWorkCount = 2,
@@ -1448,3 +1454,55 @@ INSERT INTO Building_YieldChanges
 	(BuildingType, YieldType, Yield)
 VALUES
 	('BUILDING_CONSULATE', 'YIELD_CULTURE', 1);
+
+----------------------------------------------------------------------------
+-- Jordan: Less Damaged Captured Cities
+-- Replaces the standalone "War - Less Damaged Captured Cities" mod. Raises the
+-- chance that key infrastructure survives when a city is captured to 80%.
+-- (That mod also set CITY_CAPTURE_POPULATION_PERCENT = 75, but VP already
+-- defaults it to 75, so that part was a no-op and is omitted here.)
+----------------------------------------------------------------------------
+UPDATE Buildings
+SET ConquestProb = 80
+WHERE Type IN (
+	'BUILDING_FLOATING_GARDENS', 'BUILDING_LONGHOUSE', 'BUILDING_PAPER_MAKER',
+	'BUILDING_WAT', 'BUILDING_SEAPORT', 'BUILDING_WATERMILL', 'BUILDING_WINDMILL',
+	'BUILDING_HYDRO_PLANT', 'BUILDING_SOLAR_PLANT', 'BUILDING_OBSERVATORY',
+	'BUILDING_GARDEN', 'BUILDING_LIGHTHOUSE', 'BUILDING_HARBOR',
+	'BUILDING_MILITARY_BASE', 'BUILDING_GRANARY', 'BUILDING_HOSPITAL',
+	'BUILDING_MEDICAL_LAB', 'BUILDING_WORKSHOP', 'BUILDING_FACTORY',
+	'BUILDING_NUCLEAR_PLANT', 'BUILDING_SPACESHIP_FACTORY', 'BUILDING_LIBRARY',
+	'BUILDING_UNIVERSITY', 'BUILDING_PUBLIC_SCHOOL', 'BUILDING_LABORATORY',
+	'BUILDING_AQUEDUCT', 'BUILDING_STONE_WORKS', 'BUILDING_BAZAAR',
+	'BUILDING_SATRAPS_COURT', 'BUILDING_MARKET', 'BUILDING_BANK',
+	'BUILDING_STOCK_EXCHANGE', 'BUILDING_MUD_PYRAMID_MOSQUE',
+	'BUILDING_BURIAL_TOMB', 'BUILDING_CIRCUS', 'BUILDING_FORGE',
+	'BUILDING_MONASTERY', 'BUILDING_COLOSSEUM', 'BUILDING_THEATRE',
+	'BUILDING_STADIUM', 'BUILDING_TEMPLE'
+);
+
+----------------------------------------------------------------------------
+-- Jordan: Submarines Ignore Borders
+-- Replaces the standalone "Submarines Ignore Borders" mod. Grants VP's existing
+-- PROMOTION_RIVAL_TERRITORY (RivalTerritory = 1, with its own tooltip text) free
+-- to both submarine units, so they may enter rival territory without Open Borders.
+-- Appended here (not a new file) because BuildingChanges2 loads at modinfo line
+-- 1482, after OldPromotions.xml (1432) defines PROMOTION_RIVAL_TERRITORY.
+----------------------------------------------------------------------------
+INSERT INTO Unit_FreePromotions
+	(UnitType, PromotionType)
+VALUES
+	('UNIT_SUBMARINE', 'PROMOTION_RIVAL_TERRITORY'),
+	('UNIT_NUCLEAR_SUBMARINE', 'PROMOTION_RIVAL_TERRITORY');
+
+----------------------------------------------------------------------------
+-- Jordan: "Extra Palace Bonuses" -- now a toggleable game-setup option.
+-- These wonder-style bonuses (+30% Worker build speed, +150 flat Happiness, +10% Food in
+-- all cities) used to be baked directly onto BUILDING_PALACE right here. They now live on a
+-- dedicated carrier building, BUILDING_JORDAN_PALACE_BONUS (Database Changes/Jordan/
+-- JordanPalaceBonus.xml), which Core Files/New Lua/JordanGameOptions.lua grants to each major
+-- civ's capital ONLY when the GAMEOPTION_EXTRA_PALACE_BONUSES checkbox is ticked at game setup.
+-- Leaving BUILDING_PALACE untouched here is exactly what lets the bonuses toggle OFF cleanly
+-- (a standard Vox Populi Palace when the option is unchecked).
+-- (Notre Dame's own UnmoddedHappiness 0->10 tweak above is a separate, always-on fork change.)
+----------------------------------------------------------------------------

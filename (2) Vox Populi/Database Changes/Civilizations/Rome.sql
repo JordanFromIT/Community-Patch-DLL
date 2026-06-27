@@ -3,7 +3,7 @@
 ----------------------------------------------------------
 UPDATE Traits
 SET
-	CapitalBuildingModifier = 15,
+	CapitalBuildingModifier = 25, -- Jordan: was 15 (Rome +25% capital building production)
 	CityStateCombatModifier = 30,
 	AnnexedCityStatesGiveYields = 1
 WHERE Type = 'TRAIT_CAPITAL_BUILDINGS_CHEAPER';
